@@ -25,3 +25,21 @@ form.addEventListener('submit', async (e) => {
 
   window.location.href = '../workshops';
 });
+
+window.addEventListener('load', async () => {
+
+  const workshopSelectorEl = document.querySelector('select');
+
+  const workshops = await getWorkshops();
+
+  for (let workshop of workshops) {
+
+    const optionTag = document.createElement('option');
+
+    optionTag.textContent = workshop.topic;
+    optionTag.value = workshop.id;
+
+    workshopSelectorEl.append(optionTag);
+  }
+
+});
