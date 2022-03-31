@@ -18,7 +18,7 @@ body {
   --footer-height: 25px;
 
   font-family: 'Titillium Web', sans-serif;
-  background-color: var(--color2);
+  background-color: rgb(245, 203, 179)
 }
 
 main {
@@ -162,15 +162,15 @@ footer {
 .participant {
   margin: 3px;
   padding: 3px;
-  border: dotted 2px rgb(0, 123, 255);
+  border: solid 2px rgb(89, 0, 255);
   cursor: pointer;
 }
 
 .participant-form {
   font-size: 1.5rem;
   text-align: right;
-  border: solid 5px yellowgreen;
-  background-color: rgb(0, 123, 255);
+  border: dotted 2px rgb(157, 0, 255);
+  background-color: rgb(244, 236, 148);
 }
 
 .participant-form label {
