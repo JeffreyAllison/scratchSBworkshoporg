@@ -14,7 +14,7 @@ logoutButton.addEventListener('click', () => {
   logout();
 });
 
-async function fetchAndDisplayFamilies () {
+async function fetchAndDisplayWorkshops () {
   const workshops = await getWorkshops();
   workshopsEl.textContent = '';
 
@@ -26,7 +26,7 @@ async function fetchAndDisplayFamilies () {
     participantsEl.classList.add('participants');
     workshopEl.classList.add('workshop');
 
-    nameEl.textContent = workshop.name;
+    nameEl.textContent = workshop.topic;
 
     for (let participant of workshop.participants) {
       const participantEl = document.createElement('div');
@@ -39,7 +39,7 @@ async function fetchAndDisplayFamilies () {
 
         const updatedWorkshops = await getWorkshops();
 
-        fetchAndDisplayFamilies(updatedWorkshops);
+        fetchAndDisplayWorkshops(updatedWorkshops);
 
       });
       participantsEl.append(participantEl);
@@ -50,7 +50,6 @@ async function fetchAndDisplayFamilies () {
 }
 
 window.addEventListener('load', async () => {
-  const workshops = await getWorkshops();
 
-  fetchAndDisplayFamilies(workshops);
+  await fetchAndDisplayWorkshops();
 });
