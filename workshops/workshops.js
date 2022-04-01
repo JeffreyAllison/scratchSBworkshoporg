@@ -25,6 +25,7 @@ async function fetchAndDisplayWorkshops () {
 
     participantsEl.classList.add('participants');
     workshopEl.classList.add('workshop');
+    nameEl.classList.add('names');
 
     nameEl.textContent = workshop.topic;
 

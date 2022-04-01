@@ -18,7 +18,12 @@ body {
   --footer-height: 25px;
 
   font-family: 'Titillium Web', sans-serif;
-  background-color: rgb(245, 203, 179)
+
+
+}
+
+.bg-image {
+  background-image: url('/assets/moog.jpg');
 }
 
 main {
@@ -26,7 +31,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: calc(var(--footer-height));
+  /*margin-bottom: calc(var(--footer-height));*/
 }
 
 section {
@@ -37,8 +42,8 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: var(--gutter);
-  padding-bottom: var(--gutter);
+  /*padding-top: var(--gutter);*/
+  /*padding-bottom: var(--gutter);*/
   margin-top: var(--gutter);
   margin-bottom: var(--gutter);
   border: solid 2px var(--color1);
@@ -58,7 +63,7 @@ h2 {
 }
 
 .gutter-right {
-  margin-right: 20px;
+  margin-right: 2px;
 }
 
 .main-logo {
@@ -130,19 +135,22 @@ footer {
 }
 
 .workshops-container {
-  width: 80%;
+  width: 100%;
   min-width: 500px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  color: white;
+
 }
 
 .workshop {
   width: 200px;
   margin: 10px;
-  border: solid 10px darkgoldenrod;
+  border: solid 10px rgba(113, 82, 3, 0.535);
   padding: 10px;
+  background-color: rgb(20, 13, 8);
 }
 
 .participants-in-workshops {
@@ -162,15 +170,20 @@ footer {
 .participant {
   margin: 3px;
   padding: 3px;
-  border: solid 2px rgb(89, 0, 255);
+  border: solid 2px rgb(249, 214, 90);
   cursor: pointer;
 }
 
 .participant-form {
   font-size: 1.5rem;
   text-align: right;
-  border: dotted 2px rgb(157, 0, 255);
-  background-color: rgb(244, 236, 148);
+  border: solid 9px rgb(59, 1, 95);
+  background-color: rgb(20, 13, 8);
+  color: rgb(255, 255, 255);
+  font-weight: bolder;
+  justify-content: center;
+  align-items: center;
+  margin: 105px;
 }
 
 .participant-form label {
@@ -179,4 +192,23 @@ footer {
 
 .create-main {
   padding-top: 40px;
+}
+
+h1 {
+  color: white;
+}
+
+h2 {
+  color: white;
+}
+
+.names {
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+a {
+  color: rgb(254, 100, 126);
+  background-color: rgb(29, 19, 8);
 }
