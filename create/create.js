@@ -7,9 +7,11 @@ import {
 
 const form = document.querySelector('.participant-form');
 const logoutButton = document.getElementById('logout');
+const loadingEl = document.querySelector('.loading-spinner');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+
 
   const data = new FormData(form);
 
@@ -24,9 +26,11 @@ form.addEventListener('submit', async (e) => {
   form.reset();
 
   window.location.href = '../workshops';
+  toggleLoadingSpinner();
 });
 
 window.addEventListener('load', async () => {
+  toggleLoadingSpinner();
 
   const workshopSelectorEl = document.querySelector('select');
 
@@ -41,10 +45,16 @@ window.addEventListener('load', async () => {
 
     workshopSelectorEl.append(optionTag);
   }
+  toggleLoadingSpinner();
 
 });
 checkAuth();
 
 logoutButton.addEventListener('click', () => {
   logout();
+
 });
+
+function toggleLoadingSpinner () {
+  loadingEl.classList.toggle('invisible');
+}

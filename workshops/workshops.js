@@ -9,12 +9,15 @@ checkAuth();
 
 const workshopsEl = document.querySelector('.workshops-container');
 const logoutButton = document.getElementById('logout');
+const loadingEl = document.querySelector('.loading-spinner');
 
 logoutButton.addEventListener('click', () => {
   logout();
+  toggleLoadingSpinner();
 });
 
 async function fetchAndDisplayWorkshops () {
+  toggleLoadingSpinner();
   const workshops = await getWorkshops();
   workshopsEl.textContent = '';
 
@@ -48,9 +51,14 @@ async function fetchAndDisplayWorkshops () {
     workshopEl.append(nameEl, participantsEl);
     workshopsEl.append(workshopEl);
   }
+  toggleLoadingSpinner();
 }
 
 window.addEventListener('load', async () => {
 
   await fetchAndDisplayWorkshops();
 });
+
+function toggleLoadingSpinner () {
+  loadingEl.classList.toggle('invisible');
+}

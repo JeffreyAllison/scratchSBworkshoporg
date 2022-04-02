@@ -9,6 +9,8 @@ const signUpForm = document.getElementById('sign-up');
 const signUpEmail = document.getElementById('sign-up-email');
 const signUpPassword = document.getElementById('sign-up-password');
 
+const loadingEl = document.querySelector('.loading-spinner');
+
 // if user currently logged in, redirect
 redirectIfLoggedIn();
 
@@ -21,6 +23,8 @@ signUpForm.addEventListener('submit', async (event) => {
   } else {
     console.error(user);
   }
+
+  toggleLoadingSpinner();
 });
 
 signInForm.addEventListener('submit', async (event) => {
@@ -32,4 +36,10 @@ signInForm.addEventListener('submit', async (event) => {
   } else {
     console.error(user);
   }
+
+  toggleLoadingSpinner();
 });
+
+function toggleLoadingSpinner () {
+  loadingEl.classList.toggle('invisible');
+}

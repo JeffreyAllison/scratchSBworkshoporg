@@ -141,7 +141,9 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: rgb(253, 250, 222);
+  text-decoration: underline;
+  margin: 5px;
 
 }
 
@@ -196,10 +198,14 @@ footer {
 
 h1 {
   color: white;
+  font-weight: bolder;
 }
 
 h2 {
   color: white;
+  font-weight: bolder;
+  font-size: medium;
+
 }
 
 .names {
@@ -211,4 +217,23 @@ h2 {
 a {
   color: rgb(254, 100, 126);
   background-color: rgb(29, 19, 8);
+}
+
+.loading-spinner {
+  background-color: rgba(94, 25, 253, 0.45);
+  font-size: 5rem;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.invisible {
+  display: none;
+}
+
+#loading-text {
+  animation: pulse .2s infinite ease-in-out;
 }
