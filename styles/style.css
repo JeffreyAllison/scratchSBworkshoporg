@@ -128,6 +128,7 @@ footer {
 .auth-container form {
   display: flex;
   flex-direction: column;
+  align-items: flex-end
 }
 
 .auth-container button {
@@ -236,4 +237,29 @@ a {
 
 #loading-text {
   animation: pulse .2s infinite ease-in-out;
+}
+
+label {
+  color: rgba(255, 0, 0, 0.812);
+  font-weight: bolder;
+  text-align: center;
+  font-size: xx-large;
+}
+
+h3 {
+  color: rgba(255, 0, 0, 0.816);
+  font-weight: bolder;
+  font-size: xx-large;
+  text-align: center;
+  margin-top: 350px;
+}
+
+.left {
+  margin-top: 70px;
+  margin-left: 180px;
+}
+
+.right {
+  margin-top: 70px;
+  margin-left: 70px;
 }
