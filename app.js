@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { redirectIfLoggedIn, signInUser, signupUser } from './fetch-utils.js';
 
 const signInForm = document.getElementById('sign-in');
@@ -8,27 +9,37 @@ const signUpForm = document.getElementById('sign-up');
 const signUpEmail = document.getElementById('sign-up-email');
 const signUpPassword = document.getElementById('sign-up-password');
 
+const loadingEl = document.querySelector('.loading-spinner');
+
 // if user currently logged in, redirect
 redirectIfLoggedIn();
 
 signUpForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const user = await signupUser(signUpEmail.value, signUpPassword.value);
+  event.preventDefault();
+  const user = await signupUser(signUpEmail.value, signUpPassword.value);
 
-    if (user) {
-        redirectIfLoggedIn();
-    } else {
-        console.error(user);
-    }
+  if (user) {
+    redirectIfLoggedIn();
+  } else {
+    console.error(user);
+  }
+
+  toggleLoadingSpinner();
 });
 
 signInForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const user = await signInUser(signInEmail.value, signInPassword.value);
+  event.preventDefault();
+  const user = await signInUser(signInEmail.value, signInPassword.value);
 
-    if (user) {
-        redirectIfLoggedIn();
-    } else {
-        console.error(user);
-    }
+  if (user) {
+    redirectIfLoggedIn();
+  } else {
+    console.error(user);
+  }
+
+  toggleLoadingSpinner();
 });
+
+function toggleLoadingSpinner () {
+  loadingEl.classList.toggle('invisible');
+}

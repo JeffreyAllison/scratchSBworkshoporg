@@ -1,42 +1,72 @@
-const SUPABASE_URL = '';
-const SUPABASE_KEY = '';
+/* eslint-disable no-console */
+const SUPABASE_URL = 'https://lrbzhpldjrxqkjskcizc.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxyYnpocGxkanJ4cWtqc2tjaXpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDc1NTIwMDMsImV4cCI6MTk2MzEyODAwM30.idE1m2ehmckSIic7mOSaXFl1McMzBdIrhU_Vrsr6UyI';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-export function getUser() {
-    return client.auth.session() && client.auth.session().user;
+export function getUser () {
+  return client.auth.session() && client.auth.session().user;
 }
 
-export function checkAuth() {
-    const user = getUser();
+export async function getWorkshops () {
+  const response = await client
+    .from('workshops')
+    .select('*, participants (*)');
 
-    if (!user) location.replace('../');
+  return checkError(response);
 }
 
-export function redirectIfLoggedIn() {
-    if (getUser()) {
-        location.replace('./other-page');
-    }
+export async function deleteParticipant (id) {
+  const response = await client
+    .from('participants')
+    .delete()
+    .match({ id: id });
+
+  return checkError(response);
 }
 
-export async function signupUser(email, password) {
-    const response = await client.auth.signUp({ email, password });
+export async function createParticipant (participant) {
+  const response = await client
+    .from('participants')
+    .insert({
+      name: participant.name,
+      workshop_id: participant.workshop_id,
+      user_id: client.auth.user().id
+    });
 
-    return response.user;
+  return checkError(response);
 }
 
-export async function signInUser(email, password) {
-    const response = await client.auth.signIn({ email, password });
+export function checkAuth () {
+  const user = getUser();
 
-    return response.user;
+  if (!user) location.replace('../');
 }
 
-export async function logout() {
-    await client.auth.signOut();
-
-    return (window.location.href = '../');
+export function redirectIfLoggedIn () {
+  if (getUser()) {
+    location.replace('./workshops');
+  }
 }
 
-// function checkError({ data, error }) {
-//     return error ? console.error(error) : data;
-// }
+export async function signupUser (email, password) {
+  const response = await client.auth.signUp({ email, password });
+
+  return response.user;
+}
+
+export async function signInUser (email, password) {
+  const response = await client.auth.signIn({ email, password });
+
+  return response.user;
+}
+
+export async function logout () {
+  await client.auth.signOut();
+
+  return (window.location.href = '../');
+}
+
+function checkError ({ data, error }) {
+  return error ? console.error(error) : data;
+}
